@@ -18,7 +18,7 @@ function Main() {
         }
         else {
             const filtered = films.filter(film =>
-                film.genre.toLowerCase() === selectedGenre.toLocaleLowerCase()
+                film.genre.toLowerCase() === selectedGenre.toLowerCase()
             )
             setFilteredFilms(filtered)
         }
@@ -30,15 +30,15 @@ function Main() {
         <div className="container">
             <select className="form-select"
                 value={selectedGenre}
-                onChange={(e) => selectedGenre(e.target.value)}
+                onChange={(e) => setSelectedGenre(e.target.value)}
             >
                 <option value="">Seleziona il genere del film</option>
-                <option value="1">Fantascienza</option>
-                <option value="2">Thriller</option>
-                <option value="3">Romantico</option>
-                <option value="4">Azione</option>
-                <option value="5">Fantascienza</option>
-                <option value="6">Thriller</option>
+                <option value="Fantascienza">Fantascienza</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Romantico">Romantico</option>
+                <option value="Azione">Azione</option>
+                <option value="Fantascienza">Fantascienza</option>
+                <option value="Thriller">Thriller</option>
             </select>
             <table className="table my-4">
                 <thead >
@@ -48,7 +48,7 @@ function Main() {
                     </tr>
                 </thead>
                 <tbody className="table-group-divider" >
-                    {initialFilms.map((film, index) => (
+                    {filteredFilms.map((film, index) => (
                         <tr key={index}>
                             <td>{film.title}</td>
                             <td>{film.genre}</td>
