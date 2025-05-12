@@ -9,6 +9,8 @@ function Main() {
     const [selectedGenre, setSelectedGenre] = useState("")
     //lo stato per i generi nella tabella
     const [filteredFilms, setFilteredFilms] = useState(initialFilms)
+    //lo stato per cercare i film
+    const [search, setSearch] = useState("")
 
 
     //filtro i film in base al termine di ricerca usando useEffect con filter
@@ -28,6 +30,13 @@ function Main() {
     return (
 
         <div className="container">
+            <input
+                type="text"
+                className="form-control mb-3"
+                placeholder="Cerca un film..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+            />
             <select className="form-select"
                 value={selectedGenre}
                 onChange={(e) => setSelectedGenre(e.target.value)}
