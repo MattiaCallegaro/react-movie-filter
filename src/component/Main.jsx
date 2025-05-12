@@ -13,7 +13,7 @@ function Main() {
     const [search, setSearch] = useState("")
 
 
-    //filtro i film in base al termine di ricerca usando useEffect con filter
+    //filtro i film in base al termine di ricerca usando useEffect con filter applicato al select
     useEffect(() => {
         if (!selectedGenre) {
             setFilteredFilms(films)
@@ -26,6 +26,14 @@ function Main() {
         }
         //dipendenza
     }, [selectedGenre, films])
+
+    //filtro i film in base al termine di ricerca usando useEffect con filter applicato all'input
+    useEffect(() => {
+        const filtered = films.filter(film =>
+            film.title.toLowerCase().includes(search.toLowerCase())
+        )
+        setFilteredFilms(filtered)
+    }, [search, films])
 
     return (
 
